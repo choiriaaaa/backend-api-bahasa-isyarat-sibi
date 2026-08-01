@@ -67,5 +67,7 @@ def predict():
     })
 
 if __name__ == '__main__':
-    # Server berjalan di port 5000 default lokal
-    app.run(port=5000, debug=True)
+    import os
+    # Mengambil port otomatis dari Railway, fallback ke 5000 jika dijalankan secara lokal
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
